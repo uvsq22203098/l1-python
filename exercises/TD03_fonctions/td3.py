@@ -1,10 +1,9 @@
 #temps[0] : jours, temps[1]: heures, temps[2]: minutes, temps[3]: secondes
 
-from errno import EEXIST
-
+"""from errno import EEXIST"""
 
 def tempsEnSeconde(temps):
-    """Renvoie la valeur en seconde de temps donné comme jour, heure, minute, seconde."""
+    # Renvoie la valeur en seconde de temps donné comme jour, heure, minute, seconde.
     s = 24*3600 * temps[0] + 3600 * temps[1] + 60 * temps[2] + temps[3]
     return s
 
@@ -14,9 +13,8 @@ print(tempsEnSeconde(temps))
 
 
 
-
 def secondeEnTemps(seconde):
-    """Renvoie le temps (jour, heure, minute, seconde) qui correspond au nombre de seconde passé en argument"""
+    # Renvoie le temps (jour, heure, minute, seconde) qui correspond au nombre de seconde passé en argument
     j = seconde // (24 * 3600)
     r = seconde % (24 * 3600)
     h = r // 3600
@@ -31,8 +29,6 @@ print(temps[0],"jours",temps[1],"heures",temps[2],"minutes",temps[3],"secondes")
 
 
 
-
-"""
 def afficheTemps(temps):
     # met le mot au pluriel si sa valeur est supérieure a 1, dans le cas contraire au singulier, sinon elle affichera rien
     if temps[0] > 1:
@@ -53,8 +49,6 @@ def afficheTemps(temps):
         print(temps[3],"seconde", end=" ")
 
 afficheTemps((1,0,14,23))
-"""
-
 
 
 
@@ -75,8 +69,7 @@ def afficheTemps(temps):
 afficheTemps((1,0,14,23))
 
 
-
-
+"""
 def demandeTemps():
     jour, heure, minute, seconde = input("\ncombien de jours ?\n"), 70, 70, 70
     while heure >= 24:
@@ -95,8 +88,7 @@ def demandeTemps():
     return jour, heure, minute, seconde
 
 afficheTemps(demandeTemps())
-
-
+"""
 
 
 def sommeTemps(temps1,temps2):
@@ -107,4 +99,66 @@ sommeTemps((2,3,4,25),(5,22,57,1))
 
 
 
+def proportionTemps(temps, proportion):
+    temps = tempsEnSeconde(temps)
+    temps = temps * proportion
+    temps = secondeEnTemps(temps)
+    return temps
 
+afficheTemps(proportionTemps((2,0,36,0),0.2))
+
+
+
+def tempsEnDate(temps):
+    an0 = 1970
+    mois0 = 1
+    jour0 = 1
+
+    if temps[0] >= 365:
+        an0 = an0 + temps[0] // 365
+        jour0 = jour0 % 365
+    else:
+        jour0 = temps[0] + jour0
+
+    if jour0 > 30:
+        mois0 = mois0 + jour0 // 30
+        jour0 = jour0 % 30
+    
+    return (an0, mois0, jour0, temps[1], temps[2], temps[3])
+
+def afficheDate(date):
+    print(date[2])
+    
+    if date[1] == 1:
+        print("janvier")
+    if date[1] == 2:
+        print("février")
+    if date[1] == 3:
+        print("mars")
+    if date[1] == 4:
+        print("avril")
+    if date[1] == 5:
+        print("mai")
+    if date[1] == 6:
+        print("juin")
+    if date[1] == 7:
+        print("juillet")
+    if date[1] == 8:
+        print("aout")
+    if date[1] == 9:
+        print("septembre")
+    if date[1] == 10:
+        print("octobre")
+    if date[1] == 11:
+        print("novembre")
+    if date[1] == 12:
+        print("décembre")
+
+    print(date[0])
+
+    print("a", date[3], ":", date[4], ":", date[5])
+
+temps = secondeEnTemps(1000000000)
+afficheTemps(temps)
+afficheDate(tempsEnDate(temps))
+afficheDate()
