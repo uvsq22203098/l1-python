@@ -1,6 +1,3 @@
-#temps[0] : jours, temps[1]: heures, temps[2]: minutes, temps[3]: secondes
-
-"""from errno import EEXIST"""
 
 def tempsEnSeconde(temps):
     # Renvoie la valeur en seconde de temps donné comme jour, heure, minute, seconde.
@@ -66,10 +63,11 @@ def afficheTemps(temps):
     pluriel(temps[2], "minute")
     pluriel(temps[3], "seconde")
 
+print()
 afficheTemps((1,0,14,23))
 
 
-"""
+
 def demandeTemps():
     jour, heure, minute, seconde = input("\ncombien de jours ?\n"), 70, 70, 70
     while heure >= 24:
@@ -88,12 +86,14 @@ def demandeTemps():
     return jour, heure, minute, seconde
 
 afficheTemps(demandeTemps())
-"""
+
 
 
 def sommeTemps(temps1,temps2):
     tempsT = tempsEnSeconde(temps1) + tempsEnSeconde(temps2)
+    print()
     afficheTemps(secondeEnTemps(tempsT))
+
 
 sommeTemps((2,3,4,25),(5,22,57,1))
 
@@ -105,6 +105,7 @@ def proportionTemps(temps, proportion):
     temps = secondeEnTemps(temps)
     return temps
 
+print()
 afficheTemps(proportionTemps((2,0,36,0),0.2))
 
 
@@ -127,38 +128,45 @@ def tempsEnDate(temps):
     return (an0, mois0, jour0, temps[1], temps[2], temps[3])
 
 def afficheDate(date):
-    print(date[2])
+    print(date[2],end=" ")
     
     if date[1] == 1:
-        print("janvier")
+        print("janvier", end=" ")
     if date[1] == 2:
-        print("février")
+        print("février", end=" ")
     if date[1] == 3:
-        print("mars")
+        print("mars", end=" ")
     if date[1] == 4:
-        print("avril")
+        print("avril", end=" ")
     if date[1] == 5:
-        print("mai")
+        print("mai", end=" ")
     if date[1] == 6:
-        print("juin")
+        print("juin", end=" ")
     if date[1] == 7:
-        print("juillet")
+        print("juillet", end=" ")
     if date[1] == 8:
-        print("aout")
+        print("aout", end=" ")
     if date[1] == 9:
-        print("septembre")
+        print("septembre", end=" ")
     if date[1] == 10:
-        print("octobre")
+        print("octobre", end=" ")
     if date[1] == 11:
-        print("novembre")
+        print("novembre", end=" ")
     if date[1] == 12:
-        print("décembre")
+        print("décembre", end=" ")
 
-    print(date[0])
+    print(date[0], end="")
 
     print("a", date[3], ":", date[4], ":", date[5])
 
 temps = secondeEnTemps(1000000000)
+print()
 afficheTemps(temps)
+print()
 afficheDate(tempsEnDate(temps))
-afficheDate()
+
+
+#tester ici les fonctions de la librairie time
+
+
+
