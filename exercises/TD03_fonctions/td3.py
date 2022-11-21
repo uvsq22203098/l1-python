@@ -170,3 +170,18 @@ afficheDate(tempsEnDate(temps))
 
 
 
+def bisextile(jour):
+    a = 1970
+    if jour >= 365:
+        a1 = a + (jour // 365)
+    for i in range(a1 + 1):
+        while a1 <= a:
+            if a % 4 == 0 or a % 400 == 0:
+                print(a, "est bissextile")
+            else:
+                print(a, "n'est pas bissextile")
+       
+print(bisextile(20000))
+
+
+
